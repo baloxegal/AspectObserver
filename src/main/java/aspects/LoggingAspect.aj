@@ -5,9 +5,9 @@ import java.io.File;
 import processors.FileProcessor;
 
 public aspect LoggingAspect {
-	pointcut logBeforeProcessing(FileProcessor f, File fileName) : call ((*processors.FileProcessor.transform(File)) && args(fileName));
+	pointcut logBeforeProcessing(File fileName) : call ((processors.FileProcessor.transform(File)) && args(fileName));
 	
-	before(File fileName, File fileName):logBeforeProcessing(f, fileName){
+	before(File fileName):logBeforeProcessing(fileName){
 		System.out.println(fileName.getName());
 	}
 }
