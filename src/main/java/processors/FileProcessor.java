@@ -17,15 +17,18 @@ public class FileProcessor {
 		this.cp = cp;
 	}
 	
-	public void transform(File f) throws IOException {		
+	public boolean transform(File f) throws IOException {		
 		if(cp.getTypeFile().equals("image")) {
 			BufferedImage image = ImageIO.read(f);
 			BufferedImageOp resampler = new ResampleOp(100, 100, ResampleOp.FILTER_LANCZOS);
 			BufferedImage resampledImage = resampler.filter(image, null);
 			ImageIO.write(resampledImage, cp.getExtensions().get(0), new File (cp.getPath("path.refactor") + f.getName()));
+			return true;
 		}
 		else if(cp.getTypeFile().equals("music")) {
 			new File (cp.getPath("path.refactor") + f.getName()).createNewFile();
+			return true;
 		}
+		return false;
 	}
 }
