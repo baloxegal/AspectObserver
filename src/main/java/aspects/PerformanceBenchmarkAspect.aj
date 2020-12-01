@@ -20,12 +20,13 @@ public aspect PerformanceBenchmarkAspect {
 	//Variant 2
 	boolean around() : call(* transform(..)){
 		Instant start = Instant.now();
-		boolean o = proceed();
+		boolean result = proceed();
 		Instant finish = Instant.now();
 		System.out.println("Duration of method's execution is " + Duration.between(start, finish));
 		System.out.println("thisJoinPoint is: " + thisJoinPoint);
-		System.out.println("Arguments of thisJoinPoint is: ");
-		Arrays.stream(thisJoinPoint.getArgs()).forEach(a -> System.out.println(a));		
-		return o;
+		System.out.print("Arguments of thisJoinPoint is: ");
+		Arrays.stream(thisJoinPoint.getArgs()).forEach(a -> System.out.print(a));
+		System.out.println();
+		return result;
 	}
 }

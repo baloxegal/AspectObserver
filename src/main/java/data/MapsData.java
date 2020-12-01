@@ -25,8 +25,6 @@ public class MapsData {
 	public File[] getMapData(String key) {
 		File f = getFile(key);
 		if(!f.exists()) {			
-			System.out.println("Directory - \"" + cp.getPath(key) + "\" not found");
-			System.out.println("Directory - \"" + cp.getPath(key) + "\" has been created");
 			f.mkdirs();
 		}
 		File[] objects = null;

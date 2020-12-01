@@ -17,7 +17,7 @@ public class FileProcessor {
 		this.cp = cp;
 	}
 	
-	public boolean transform(File f) throws IOException {		
+	public boolean transform(File f) throws IOException {
 		if(cp.getTypeFile().equals("image")) {
 			BufferedImage image = ImageIO.read(f);
 			BufferedImageOp resampler = new ResampleOp(100, 100, ResampleOp.FILTER_LANCZOS);

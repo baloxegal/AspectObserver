@@ -29,7 +29,6 @@ public class DirectoryObserver implements Runnable {
 			c.compare(currentObjects, lastObjects);
 			lastObjects = currentObjects;
 			c.compareRefact(currentObjects, md.getMapData("path.refactor"));
-			Thread.yield();
 			Thread.sleep(500);			
 		}		
 	}
